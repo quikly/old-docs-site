@@ -4,6 +4,10 @@ A Quikly campaign can be configured to be accessible only if a verified user tok
 
 This token can be used to bypass normal user login in a campaign to provide a more seamless experience.
 
+The samples below do not encrypt the data; they only provide a signature to ensure that the data is not tampered with in transit.
+
+Alternative methods exist to encrypt data before appending it to the site url.
+
 ## Code Samples
 
 ### Ruby
@@ -26,7 +30,7 @@ hmac = OpenSSL::HMAC.hexdigest('sha1', "shared secret here", data)
 $data = "user-id-here";
 $hmac = hash_hmac('sha1', $data, "shared secret here");
 $signed_user_id = "{$data}--{$hmac}";
-
 ?>
+
 <iframe src="https://www.quikly.com/q/[campaign-id]?uid=<?php echo $signed_user_id ?>" />
 ```
