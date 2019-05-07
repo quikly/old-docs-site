@@ -1,0 +1,66 @@
+---
+layout: default
+title: Post Message Example
+permalink: "/post-message-example"
+noindex: true
+---
+
+<style>
+.main-content pre > code.language-js {
+	font-size: 10px;
+	tab-size: 2;
+}
+</style>
+
+<div>
+	<div style="display: inline-block;width: 40%;">
+			<script type="text/javascript">
+				var qEventMethod = window.addEventListener
+					? "addEventListener"
+					: "attachEvent";
+				var qOnEvent = window[qEventMethod];
+				var qMessageEvent = qEventMethod == "attachEvent" ? "onmessage" : "message";
+				qOnEvent(
+					qMessageEvent,
+					function(e) {
+						var key = e.message ? "message" : "data";
+						var data = e[key];
+						if (data["id"] == "qIframeSize") {
+							document.getElementById("message").innerHTML = data["value"];
+							document.getElementById("iframe").style.height = data["value"] + "px";
+						}
+					},
+					false
+				);
+			</script>
+
+			<iframe
+				id="iframe"
+				src="./iframe.html"
+				height="700px"
+				style="border: none;"
+			></iframe>
+			<div id="message"></div>
+	</div><div style="display: inline-block; width:60%;">
+{% highlight js %}
+var qEventMethod = window.addEventListener
+			? "addEventListener"
+			: "attachEvent";
+var qOnEvent = window[qEventMethod];
+var qMessageEvent = qEventMethod == "attachEvent" ? "onmessage" : "message";
+qOnEvent(
+	qMessageEvent,
+	function(e) {
+		var key = e.message ? "message" : "data";
+		var data = e[key];
+		if (data["id"] == "qIframeSize") {
+			document.getElementById("message").innerHTML = data["value"];
+			document.getElementById("iframe").style.height = data["value"] + "px";
+		}
+	},
+	false
+);
+
+{% endhighlight %}
+</div>
+</div>

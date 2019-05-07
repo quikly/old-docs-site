@@ -1,0 +1,12 @@
+<html>
+  <body style="margin: 0;">
+    <div id="content" style="height: 400px; border: 1px solid black;">
+			I'm in the iframe!
+    </div>
+
+    <script type="text/javascript">
+      var height = document.getElementById("content").offsetHeight;
+      parent.postMessage({ id: "qIframeSize", value: height }, "*");
+    </script>
+  </body>
+</html>
