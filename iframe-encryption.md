@@ -93,7 +93,7 @@ $plain_data = "super secret string";
 $encrypted = encrypt($plain_data);
 // $decrypted = decrypt($encrypted);
 ?>
-<iframe src="https://www.quikly.com/q/[campaign-id]?p=<%= @encrypted %>" />
+<iframe src="https://www.quikly.com/q/[campaign-id]?p=<?php echo $encrypted ?>" />
 ```
 
 #### Ruby
