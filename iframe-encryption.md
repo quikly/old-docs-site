@@ -106,7 +106,7 @@ var_dump($output)
 
 #### Ruby
 
-```erb
+```ruby
 require 'openssl'
 require 'base64'
 
