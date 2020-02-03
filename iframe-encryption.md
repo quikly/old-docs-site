@@ -75,49 +75,56 @@ const CIPHER_METHOD = 'AES-256-CBC';
 function encrypt($str) {
     $iv_length = openssl_cipher_iv_length(CIPHER_METHOD);
     $iv = random_bytes($iv_length);
-    $val = openssl_encrypt($str, CIPHER_METHOD, PASSWORD, OPENSSL_RAW_DATA, $iv);
-    $data = base64_encode($iv . ":" . $val);
-    return strtr($data, '+/', '-_');
+    $data = openssl_encrypt($str, CIPHER_METHOD, PASSWORD, OPENSSL_RAW_DATA, $iv);
+    return bin2hex($iv).":".bin2hex($data);
 }
 
 function decrypt($str) {
-    $val = strtr($str, '-_', '+/');
-    $val = base64_decode($val);
-    $parts = explode(':', $val);
-    $iv = $parts[0];
-    $data = $parts[1];
+    $parts = explode(':', $str);
+    $iv = hex2bin($parts[0]);
+    $data = hex2bin($parts[1]);
     return openssl_decrypt($data, CIPHER_METHOD, PASSWORD, OPENSSL_RAW_DATA, $iv);
 }
 
-$plain_data = "super secret string";
+$values = [
+  'email' => 'email@example.com',
+  'pid' => '+ < > # % { } | \ ^ ~ [ ] `'
+];
+
+$plain_data = http_build_query($values);
+
+// multiple values can be encrypted in the same string:
 $encrypted = encrypt($plain_data);
-// $decrypted = decrypt($encrypted);
+$decrypted = decrypt($encrypted);
+
+parse_str($decrypted, $output);
+echo "Encrypted: $encrypted";
+echo "\nDecrypted: ";
+var_dump($output)
 ?>
-<iframe src="https://www.quikly.com/q/[campaign-id]?p=<?php echo $encrypted ?>" />
 ```
 
 #### Ruby
 
 ```erb
-<%
 require 'openssl'
 require 'base64'
 
 PASSWORD = '32-character-shared-secret-here-'
 CIPHER_METHOD = 'AES-256-CBC'
 
+# for generating
 def encrypt(str)
   cipher = OpenSSL::Cipher.new(CIPHER_METHOD)
   cipher.encrypt
   iv = cipher.random_iv
   cipher.key = PASSWORD
   data = cipher.update(str) + cipher.final
-  #return "#{iv}:#{data}"
-  Base64.urlsafe_encode64("#{iv}:#{data}")
+  "#{bin_to_hex(iv)}:#{bin_to_hex(data)}"
 end
 
 def decrypt(str)
-  iv, data = Base64.urlsafe_decode64(str).split(":")
+  iv, data = str.split(":").map { |v| hex_to_bin(v) }
   cipher = OpenSSL::Cipher.new(CIPHER_METHOD)
   cipher.decrypt
   cipher.key = PASSWORD
@@ -125,10 +132,22 @@ def decrypt(str)
   cipher.update(data) + cipher.final
 end
 
-plain_data = "super secret string";
-@encrypted = encrypt(plain_data)
-# decrypted = decrypt(encrypted)
-%>
+def bin_to_hex(s)
+  s.unpack('H*').first
+end
 
-<iframe src="https://www.quikly.com/q/[campaign-id]?p=<%= @encrypted %>" />
+def hex_to_bin(s)
+  [s].pack('H*')
+end
+
+values = {
+  email: 'email@example.com',
+  pid: '+ < > # % { } | \ ^ ~ [ ] `'
+}
+
+plain_data = URI.encode_www_form(values)
+
+@encrypted = encrypt(plain_data)
+@decrypted = decrypt(@encrypted)
+puts "Encrypted: #{@encrypted}\nDecrypted: #{URI.decode_www_form(@decrypted)}\n\n"
 ```
