@@ -1,0 +1,36 @@
+---
+layout: default
+title: Quikly Script Tag for Referral Conversion
+noindex: true
+---
+
+{% highlight js %}
+<script async src="http://pixel.quiklydemo.com/embed/js"></script>
+<script>
+  window.qDataLayer = window.qDataLayer || [];
+  function qData() {
+    qDataLayer.push(arguments);
+  }
+  qData("config", "m/GxPhBA");
+  qData("coffee_club", { customerId: "12345" });
+</script>
+
+{% endhighlight %}
+
+
+<script async src="http://pixel.quiklydemo.com/embed/js"></script>
+<script>
+  window.qDataLayer = window.qDataLayer || [];
+  function qData() {
+    qDataLayer.push(arguments);
+  }
+  qData("config", "m/EXohA");
+  function triggerEvent() {
+    qData("coffee_club", { customerId: "12345" });
+  }
+</script>
+
+<h1>Click to trigger an event:</h1>
+
+<button onClick="triggerEvent()">Trigger Event</button>
+

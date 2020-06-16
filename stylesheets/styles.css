@@ -3,7 +3,6 @@ body {
   margin: 0;
 }
 
-
 .wrapper {
   display: flex;
   align-items: center;
@@ -25,4 +24,9 @@ body {
   .wrapper {
     background-size: 40%;
   }
+}
+
+.main-content pre > code.language-js {
+	font-size: 10px;
+	tab-size: 2;
 }
