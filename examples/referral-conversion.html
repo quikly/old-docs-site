@@ -24,13 +24,57 @@ noindex: true
   function qData() {
     qDataLayer.push(arguments);
   }
-  qData("config", "m/EXohA");
+  qData("config", "m/GxPhBA");
+  function triggerEvent(action) {
+    customerId = document.getElementById('customerId').value
+    qData(action, { customerId: customerId });
+  }
+
   function triggerEvent() {
     qData("coffee_club", { customerId: "12345" });
   }
 </script>
 
-<h1>Click to trigger an event:</h1>
 
-<button onClick="triggerEvent()">Trigger Event</button>
+<ul>
+  <li>
+    <input type="customerId" name="customerId" id="customerId" placeholder="Enter customerId" />
+  </li>
+  <li>
+    <button onclick="triggerEvent('coffee_club');">Click to complete the 'coffee_club' action</button>
+  </li>
+</ul>
+
+<section>
+  <h2>Set Up</h2>
+  <ul>
+    <li>Campaign
+      <ul>
+        <li>Embed host URL: enter the URL of the page where the script tag is embedded</li>
+        <li>Enable UI: FALSE</li>
+        <li>Cooke not required: FALSE</li>
+        <li>Usually we want to use a custom segment for these campaigns, but it's not required.</li>
+        <li>Set up pixel, set the code (i.e. 'coffee_club') and add 'customerId' to accepted client parameters</li>
+        <li>Add a Claim rule for 'pixel_goal' with min count set to 0 (unlimited)</li>
+      </ul>
+    </li>
+    <li>Deal
+      <ul>
+        <li>Start at date in the past</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2>Demo</h2>
+  <ul>
+    <li>Referral link to activate (and return to this page w/ scope param) <a href="https://www.quiklydemo.com/mypanera-coffee-subscription/s/mayYGQML">https://www.quiklydemo.com/mypanera-coffee-subscription/s/mayYGQML</a></li>
+    <li>Campaign Id: 508</li>
+  </ul>
+</section>
+
+
+
+
 

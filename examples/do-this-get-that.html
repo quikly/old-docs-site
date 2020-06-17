@@ -25,9 +25,9 @@ noindex: true
   function goToPage(page) {
     qData('ui', { page: page, root: 'quikly-promo' });
   }
-  function triggerAction(action) {
+  function triggerEvent(action) {
     email = document.getElementById('email').value
-    qData('loyalty_signup', { email: email });
+    qData(action, { email: email });
   }
 </script>
 
@@ -45,7 +45,7 @@ noindex: true
     <input type="email" name="email" id="email" placeholder="Enter email" />
   </li>
   <li>
-    <button onclick="triggerAction('loyalty_signup');">Click to complete the 'loyalty_signup' action</button>
+    <button onclick="triggerEvent('loyalty_signup');">Click to complete the 'loyalty_signup' action</button>
   </li>
 </ul>
 
@@ -76,7 +76,7 @@ noindex: true
   <ul>
     <li>Short link to activate: <a href="https://www.quiklydemo.com/demo/s/loyalty">https://www.quiklydemo.com/demo/s/loyalty</a></li>
     <li>Destination URL with q_scope appended: <a href="?q_scope=ODAvRGVhbC80OTg%253D">Click here</a></li>
-    <li>Campaign Admin: <a href="https://www.quiklydemo.com/restricted/admin/campaigns/507">Campaign #507</a></li>
+    <li>Campaign ID: 507</li>
   </ul>
 </section>
 <p>
