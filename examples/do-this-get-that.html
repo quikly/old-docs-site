@@ -3,6 +3,9 @@ layout: default
 title: Quikly Script Tag for 'Do This Get That' Campaign
 noindex: true
 ---
+{% highlight html %}
+<div id="quikly-promo">[instructions loaded here]</div>
+{% endhighlight %}
 
 {% highlight js %}
 <script async src="https://pixel.quiklydemo.com/embed/js"></script>
@@ -22,6 +25,10 @@ noindex: true
   function goToPage(page) {
     qData('ui', { page: page, root: 'quikly-promo' });
   }
+  function triggerAction(action) {
+    email = document.getElementById('email').value
+    qData('loyalty_signup', { email: email });
+  }
 </script>
 
 <h1 id="header">Do This Get That Test</h1>
@@ -30,6 +37,15 @@ noindex: true
     <button onclick="goToPage('instructions')">Instructions</button>
     <button onclick="goToPage('reward')">Reward</button>
     <button onclick="goToPage('redemption')">Redemption</button>
+  </li>
+</ul>
+
+<ul>
+  <li>
+    <input type="email" name="email" id="email" placeholder="Enter email" />
+  </li>
+  <li>
+    <button onclick="triggerAction('loyalty_signup');">Click to complete the 'loyalty_signup' action</button>
   </li>
 </ul>
 
