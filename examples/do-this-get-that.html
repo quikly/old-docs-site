@@ -11,7 +11,7 @@ noindex: true
   function qData() {
     qDataLayer.push(arguments);
   }
-  qData('config', 'm/nzMhLd');
+  qData('config', 'm/YndhXo');
   qData('ui', { page: 'instructions', root: 'quikly-promo' });
   // qData('ui', { page: 'reward', root: 'quikly-promo' });
   // qData('ui', { page: 'redemption', root: 'quikly-promo' });
@@ -35,6 +35,34 @@ noindex: true
 
 <div id="quikly-promo"></div>
 
+<section>
+  <h2>Set Up</h2>
+  <ul>
+    <li>Campaign
+      <ul>
+        <li>Enable UI</li>
+        <li>Make sure require cookie is unchecked (must visit via short link to activate)</li>
+        <li>Enable Visit Brand Page ETA</li>
+        <li>Set up pixel, set the code (i.e. 'loyalty_signup')</li>
+        <li>Add a Claim rule for 'pixel_goal'</li>
+      </ul>
+    </li>
+    <li>Deal
+      <ul>
+        <li>Start at date in the past</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2>Demo</h2>
+  <ul>
+    <li>Short link to activate: <a href="https://www.quiklydemo.com/demo/s/loyalty">https://www.quiklydemo.com/demo/s/loyalty</a></li>
+    <li>Destination URL with q_scope appended: <a href="?q_scope=ODAvRGVhbC80OTg%253D">Click here</a></li>
+    <li>Campaign Admin: <a href="https://www.quiklydemo.com/restricted/admin/campaigns/507">Campaign #507</a></li>
+  </ul>
+</section>
 <p>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
   tempor incididunt ut labore et dolore magna aliqua. Vitae suscipit tellus
@@ -198,6 +226,6 @@ noindex: true
   function qData() {
     qDataLayer.push(arguments);
   }
-  qData('config', 'm/nzMhLd');
+  qData('config', 'm/YndhXo');
   qData('ui', { page: 'instructions', root: 'quikly-promo' });
 </script>
