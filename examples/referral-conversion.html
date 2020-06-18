@@ -28,36 +28,66 @@ noindex: true
 </script>
 
 <header>
-  <h1>Embedded Quikly - Instant Promo</h1>
+  <h1>Tracking Conversions from Social Referrals </h1>
 </header>
 
-{% highlight js %}
-<script async src="https://pixel.quiklydemo.com/embed/js"></script>
+
+<section>
+  <h2>Overview</h2>
+  <p>Quikly can provide a microsite that encourages customers to invite their friends to take an action on the brand's website, such as sign up for a paid service, loyalty membership, credit card, etc. Participants are provided with unique referral links that they can share via email, text message, or online. When someone visits a referral link, they are redirected to the brand's website along with a referral code in the URL. This referral code is recorded by the Quikly script tag on your site. Finally, when the referred visitor completes the intended action, the script tag is used to track the event. Quikly can then reward the referring user with an incentive or report the referral back in a batched report.
+  </p>
+</section>
+
+<section>
+  <h2>Scenario</h2>
+  <p>A brand would like to ask their existing loyalty members to invite their friends to sign up for the loyalty program, too. They will offer a $5 discount on a future order for the first 2 friends they get to sign up. </p>
+</section>
+
+<section>
+  <h2>Set Up</h2>
+  <p>Quikly will work with you to set up the referral microsite where people can participate, access their referral links, and track how many people they have referred.</p>
+
+  <h3>Script Tag</h3>
+  <p>The Quikly script tag must be present on the landing page of your site where referred visitors first land. This captures the unique identifier from the referring user to associate with the conversion.</p>
+{% highlight js %}<script async src="https://pixel.quiklydemo.com/embed/js"></script>
 <script>
   window.qDataLayer = window.qDataLayer || [];
   function qData() {
     qDataLayer.push(arguments);
   }
-  qData("config", "m/GxPhBA");
-  qData("coffee_club", { customerId: "12345" });
+  qData('config', 'm/GxPhBA');
 </script>
 {% endhighlight %}
 
-<ul>
-  <li>
-    <input type="customerId" name="customerId" id="customerId" placeholder="Enter customerId" />
-  </li>
-  <li>
-    <button onclick="triggerEvent('coffee_club');">Click to complete the 'coffee_club' action</button>
-  </li>
-</ul>
+<p>Then, when the referred user completes the action, trigger the event along with any relevant data:</p>
+{% highlight js %}<script>
+  qData('coffee_club', { customerId: 123456 });
+</script>
+{% endhighlight %}
+
+<figure class="highlight demo">
+  <h3>Try It</h3>
+  <p>You must visit a referral link in order to track the event when it is triggered:</p>
+  <p></p><a href="https://www.quiklydemo.com/mypanera-coffee-subscription/s/mayYGQML">https://www.quiklydemo.com/mypanera-coffee-subscription/s/mayYGQML</a></p>
+
+  <ul>
+    <li>
+      <input type="customerId" name="customerId" id="customerId" placeholder="Enter customerId" />
+    </li>
+    <li>
+      <button onclick="triggerEvent('coffee_club');">Click to complete the 'coffee_club' action</button>
+    </li>
+  </ul>
+
+</figure>
+
+</section>
 
 <section>
   <h2>Set Up</h2>
   <ul>
     <li>Campaign
       <ul>
-        <li>Embed host URL: enter the URL of the page where the script tag is embedded</li>
         <li>Enable UI: FALSE</li>
         <li>Cooke not required: FALSE</li>
         <li>Usually we want to use a custom segment for these campaigns, but it's not required.</li>
@@ -76,7 +106,6 @@ noindex: true
 <section>
   <h2>Demo</h2>
   <ul>
-    <li>Referral link to activate (and return to this page w/ scope param) <a href="https://www.quiklydemo.com/mypanera-coffee-subscription/s/mayYGQML">https://www.quiklydemo.com/mypanera-coffee-subscription/s/mayYGQML</a></li>
     <li>Campaign Id: 508</li>
   </ul>
 </section>
