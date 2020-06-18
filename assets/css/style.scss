@@ -8,12 +8,6 @@ section:not(.page-header) {
   margin-bottom: 3rem;
 }
 
-nav ul {
-  font-size: .9rem;
-  list-style: none;
-  padding-left: 0;
-}
-
 body.home {
   background:linear-gradient(110deg, #5d78cd, #7bc2d8);
 }
@@ -30,6 +24,11 @@ body.home {
   }
   ul {
     padding-left: 2rem;
+  }
+  nav ul {
+    font-size: .9rem;
+    list-style: none;
+    padding-left: 0;
   }
 }
 
