@@ -4,19 +4,11 @@ title: Quikly Script Tag for Referral Conversion
 noindex: true
 ---
 
-{% highlight js %}
-<script async src="https://pixel.quiklydemo.com/embed/js"></script>
-<script>
-  window.qDataLayer = window.qDataLayer || [];
-  function qData() {
-    qDataLayer.push(arguments);
-  }
-  qData("config", "m/GxPhBA");
-  qData("coffee_club", { customerId: "12345" });
-</script>
-
-{% endhighlight %}
-
+<nav>
+  <ul>
+    <li><a href="{% link examples/index.html %}">Back to Examples</a></li>
+  </ul>
+</nav>
 
 <script async src="https://pixel.quiklydemo.com/embed/js"></script>
 <script>
@@ -35,6 +27,21 @@ noindex: true
   }
 </script>
 
+<header>
+  <h1>Embedded Quikly - Instant Promo</h1>
+</header>
+
+{% highlight js %}
+<script async src="https://pixel.quiklydemo.com/embed/js"></script>
+<script>
+  window.qDataLayer = window.qDataLayer || [];
+  function qData() {
+    qDataLayer.push(arguments);
+  }
+  qData("config", "m/GxPhBA");
+  qData("coffee_club", { customerId: "12345" });
+</script>
+{% endhighlight %}
 
 <ul>
   <li>

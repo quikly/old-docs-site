@@ -4,6 +4,34 @@ title: Quikly Script Tag for Embedded 'Instant' Campaign
 noindex: true
 ---
 
+<style>
+  .promo-wrap   {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .quikly-promo {
+    flex: 1 330px;
+    border: 2px solid red;
+  }
+</style>
+
+<nav>
+  <ul>
+    <li><a href="{% link examples/index.html %}">Back to Examples</a></li>
+  </ul>
+</nav>
+
+<script>
+  function goToPage(page, root) {
+    root = root || 'quikly-promo-1'
+    qData('ui', { page: page, root: root });
+  }
+</script>
+
+<header>
+  <h1>Embedded Quikly - Instant Promo</h1>
+</header>
+
 {% highlight js %}
 <script async src="http://pixel.quikly.localhost:5000/embed/js"></script>
 <script>
@@ -17,25 +45,6 @@ noindex: true
 </script>
 {% endhighlight %}
 
-
-<script>
-  function goToPage(page, root) {
-    root = root || 'quikly-promo-1'
-    qData('ui', { page: page, root: root });
-  }
-</script>
-<style>
-  .promo-wrap   {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .quikly-promo {
-    flex: 1 330px;
-    border: 2px solid red;
-  }
-</style>
-
-<h1 id="header">Embedded Quikly - Instant Promo</h1>
 <ul>
   <li>
     <p>Promo 2</p>
