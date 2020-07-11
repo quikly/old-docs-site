@@ -9,7 +9,7 @@ section:not(.page-header) {
 }
 
 body.home {
-  background:linear-gradient(110deg, #5d78cd, #7bc2d8);
+  background: linear-gradient(110deg, #5d78cd, #7bc2d8);
 }
 
 .main-content {
@@ -20,23 +20,23 @@ body.home {
     max-width: calc(100% - 2rem);
   }
   .highlight {
-    width: calc(100% - 2rem);;
+    width: calc(100% - 2rem);
   }
   ul {
     padding-left: 2rem;
   }
   nav ul {
-    font-size: .9rem;
+    font-size: 0.9rem;
     list-style: none;
     padding-left: 0;
   }
-}
 
-figure.highlight.demo {
-  p {
-    margin: 1rem 0;
+  figure.highlight.demo {
+    p {
+      margin: 1rem 0;
+    }
+    padding: 2rem;
   }
-  padding: 2rem;
 }
 
 img.centered {
@@ -49,7 +49,7 @@ img.centered {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: url('../images/circles-background.png');
+  background: url("../images/circles-background.png");
   background-size: 130%;
   background-repeat: no-repeat;
   background-position: center;
@@ -68,6 +68,12 @@ img.centered {
 }
 
 .main-content pre > code.language-js {
-	font-size: 1rem;
-	tab-size: 2;
+  font-size: 1rem;
+  tab-size: 2;
+}
+
+.inline-embed {
+  max-width: 64rem;
+  padding: 2rem 6rem;
+  margin: 0 auto;
 }

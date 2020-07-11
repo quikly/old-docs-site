@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: example
 title: Quikly Script Tag for 'Do This Get That' Campaign
 noindex: true
 js_src: https://pixel.quiklydemo.com/embed/js
@@ -28,155 +28,277 @@ short_link: https://www.quiklydemo.com/demo/s/loyalty
   }
 </script>
 
-<nav>
-  <ul>
-    <li><a href="{% link examples/index.html %}">&lt; Back to Examples</a></li>
-  </ul>
-</nav>
-
-<header>
+<header class="main-content">
+  <nav>
+    <ul>
+      <li>
+        <a href="{% link examples/index.html %}">&lt; Back to Examples</a>
+      </li>
+    </ul>
+  </nav>
   <h1>Do This Get That</h1>
 </header>
 
-<section>
+<section class="main-content">
   <h2>Overview</h2>
-  <p>Quikly provides activation links that enable a specific promotion for a targeted audience on your site. Visitors
-    click through to the page on your site and complete the key activity. The Quikly script tracks the response, locks
-    in the position, and reveals the reward earned by email or on your site instantly.</p>
+  <p>
+    Quikly provides activation links that enable a specific promotion for a
+    targeted audience on your site. Visitors click through to the page on your
+    site and complete the key activity. The Quikly script tracks the response,
+    locks in the position, and reveals the reward earned by email or on your
+    site instantly.
+  </p>
 </section>
 
-<section>
+<section class="main-content">
   <h2>Scenario</h2>
-  <p>A customer clicks the quikly short link. Quikly appends a url parameter and redirects the visitor to a page on the
-    brand's website. This page includes Quikly's script tag in order to read the appended parameter from the url and
-    store it in a first-party cookie.</p>
-  <p>If desired, the Quikly script tag can be used to embed instructions directly on the page to only those that have
-    come from the short link.</p>
-  <p>The visitor completes the action and the script tag fires an event which indicates the participate completed the
-    action. Optionally, Quikly can show a reward screen when this occurs.</p>
-  <p>Finally, the script tag can be used to show reward details to any participant that completed the action and
-    received a reward.</p>
+  <p>
+    A customer clicks the quikly short link. Quikly appends a url parameter and
+    redirects the visitor to a page on the brand's website. This page includes
+    Quikly's script tag in order to read the appended parameter from the url and
+    store it in a first-party cookie.
+  </p>
+  <p>
+    If desired, the Quikly script tag can be used to embed instructions directly
+    on the page to only those that have come from the short link.
+  </p>
+  <p>
+    The visitor completes the action and the script tag fires an event which
+    indicates the participate completed the action. Optionally, Quikly can show
+    a reward screen when this occurs.
+  </p>
+  <p>
+    Finally, the script tag can be used to show reward details to any
+    participant that completed the action and received a reward.
+  </p>
 </section>
 
-<section>
+<section class="main-content">
   <h2>Set Up</h2>
   <h3>Activation URLs</h3>
-  <p>If desired, Quikly can provide activation URLs to use in your marketing efforts. These links will activate the
-    campaign for that visitor and aid in tracking the performance of each channel. This can be used to limit
-    participation in a campaign only to a select audience that has visited your site through a specific link.</p>
+  <p>
+    If desired, Quikly can provide activation URLs to use in your marketing
+    efforts. These links will activate the campaign for that visitor and aid in
+    tracking the performance of each channel. This can be used to limit
+    participation in a campaign only to a select audience that has visited your
+    site through a specific link.
+  </p>
 
   <h3>Script Tag</h3>
-  <p>The Quikly script tags must be present on your site to dynamically display promotion details, such as instructions
-    on how to complete the action, or how to take advantage of the offer once the action is complete. It is also used to
-    track when incentivized actions occur that result in an offer being assigned to that participant. The commands
-    passed to the tag determine whether to track an action or to display a UI component. This tag does not have to be
-    present on every page on your site, but it does have to be included on any page where: a) an activation URLs
-    redirects, b) Quikly renders dynamic content, or c) an incentivized action occurs.</p>
+  <p>
+    The Quikly script tags must be present on your site to dynamically display
+    promotion details, such as instructions on how to complete the action, or
+    how to take advantage of the offer once the action is complete. It is also
+    used to track when incentivized actions occur that result in an offer being
+    assigned to that participant. The commands passed to the tag determine
+    whether to track an action or to display a UI component. This tag does not
+    have to be present on every page on your site, but it does have to be
+    included on any page where: a) an activation URLs redirects, b) Quikly
+    renders dynamic content, or c) an incentivized action occurs.
+  </p>
 
-{% highlight js %}<script async src="{{ page.js_src }}"></script>
+{% highlight js %}
+<script async src="{{ page.js_src }}"></script>
 <script>
   window.qDataLayer = window.qDataLayer || [];
   function qData() {
     qDataLayer.push(arguments);
   }
-  qData('config', '{{ page.embed_config }}');
-</script>{% endhighlight %}
+  qData("config", "{{ page.embed_config }}");
+</script>
+{% endhighlight %}
 </section>
 
-<section>
+<section class="main-content">
   <h2>Showing Instructions for Completing an Action</h2>
-  <p>Quikly can display messaging around an active promotion to visitors who clicked an activation link. Additional parameters can be passed to the “ui” command to control where the message appears.</p>
-  <img class="m1" src="/assets/images/examples/instructions.png" alt="instructions" />
+  <p>
+    Quikly can display messaging around an active promotion to visitors who
+    clicked an activation link. Additional parameters can be passed to the “ui”
+    command to control where the message appears.
+  </p>
+  <img src="/assets/images/examples/instructions.png" alt="instructions" />
 
-{% highlight html %}<div id="quikly-promo">[instructions loaded here]</div>{% endhighlight %}
-{% highlight js %}
-<script>
-  // assumes script tag has already been configured on the page (see above)
-  qData('ui', { page: 'instructions', root: 'quikly-promo' });
-</script>{% endhighlight %}
+  {% highlight html %}
+  <div id="quikly-promo">[instructions loaded here]</div>
+  {% endhighlight %} {% highlight js %}
+  <script>
+    // assumes script tag has already been configured on the page (see above)
+    qData("ui", { page: "instructions", root: "quikly-promo" });
+  </script>
+  {% endhighlight %}
 
   <figure class="highlight demo">
     <h3>Try It</h3>
-    <p><a href="{{ page.short_link }}">Click this link to activate the promotion.</a> Nothing will appear when you click the button unless you have activated the promotion via this link.</p>
     <p>
-      <button onclick="goToPage('instructions', 'quikly-instructions')">Click to reveal the instructions</button>
+      <a href="{{ page.short_link }}">Click this link to activate the promotion.</a>
+      Nothing will appear when you click the button unless you have activated the promotion via this link.
     </p>
-    <div id="quikly-instructions"><em>Instructions will appear here.</em></div>
+    <p>
+      <button onclick="goToPage('instructions', 'quikly-instructions')">
+        Click to reveal the instructions
+      </button>
+    </p>
+    <h3>Customizations</h3>
+    <ul>
+      <li>Instructions widget header</li>
+      <li>Instructions widget copy</li>
+      <li>Campaign Closed Screen: Title</li>
+      <li>Campaign Closed Screen: Subtitle</li>
+    </ul>
   </figure>
 </section>
 
+<section class="inline-embed">
+  <div id="quikly-instructions"><em>Instructions will appear here.</em></div>
+</section>
 
-<section>
+<section class="main-content">
   <h2>Showing the Reward</h2>
-  <p>Upon completing the action and triggering the event, Quikly can display a modal window with more detail about the awarded offer. In this case, we set up the “reward” page, and as soon as the “loyalty_signup” event is triggered, the reward UI is revealed.</p>
-  <img class="m1 centered" src="/assets/images/examples/reward.png" alt="reward" style="max-width: 300px;" />
+  <p>
+    Upon completing the action and triggering the event, Quikly can display a
+    modal window with more detail about the awarded offer. In this case, we set
+    up the “reward” page, and as soon as the “loyalty_signup” event is
+    triggered, the reward UI is revealed.
+  </p>
+  <img
+    class="centered"
+    src="/assets/images/examples/reward.png"
+    alt="reward"
+    style="max-width: 300px;"
+  />
 
-{% highlight js %}
-<script>
-  // assumes script tag has already been configured on the page (see above)
-  qData("ui", { page: "reward" }); // enable UI and specify which page to display
-  qData("loyalty_signup", { email: "<USER_EMAIL_GOES_HERE>" }); // trigger event, which will reveal the page
-</script>{% endhighlight %}
-
-<figure class="highlight demo">
-  <h3>Try It</h3>
-  <p><a href="https://www.quiklydemo.com/demo/s/loyalty">Click this link to activate the promotion if you haven't yet.</a> Nothing will appear when you click the button unless you have activated the promotion via this link.</p>
-
-  <div>
-    <input type="email" name="email" id="email" placeholder="Enter email" style="margin-bottom: 1rem;" />
-      <div>
-        <button onclick="triggerEvent('loyalty_signup');">Click to complete the 'loyalty_signup' action</button>
-      </div>
-  </div>
-  </figure>
-
-</section>
-
-<section>
-  <h2>Redemption</h2>
-  <p>Quikly can surface additional redemption messaging on any page of your site to those who have successfully activated the offer. The code will not activate unless an offer was previously awarded.</p>
-  <img class="m1 centered" src="/assets/images/examples/redemption.png" alt="redemption" />
-
-{% highlight html %}<div id="quikly-promo">[redemption instructions loaded here]</div>{% endhighlight %}
-
-{% highlight js %}
-<script>
-  // assumes script tag has already been configured on the page (see above)
-  qData("ui", { page: "redemption", root: "quikly-promo" }); // enable UI and specify which page to render and where
-</script>{% endhighlight %}
+  {% highlight js %}
+  <script>
+    // assumes script tag has already been configured on the page (see above)
+    qData("ui", { page: "reward" }); // enable UI and specify which page to display
+    qData("loyalty_signup", { email: "<USER_EMAIL_GOES_HERE>" }); // trigger event, which will reveal the page
+  </script>
+  {% endhighlight %}
 
   <figure class="highlight demo">
     <h3>Try It</h3>
-    <p><a href="https://www.quiklydemo.com/demo/s/loyalty">Click this link to activate the promotion.</a> Nothing will appear when you click the button unless you have activated the promotion via this link.</p>
     <p>
-      <button onclick="goToPage('redemption', 'quikly-redemption')">Click to reveal the redemption instructions</button>
+      <a href="{{ page.short_link }}"
+        >Click this link to activate the promotion if you haven't yet.</a
+      >
+      Nothing will appear when you click the button unless you have activated
+      the promotion via this link.
     </p>
-    <div id="quikly-redemption"><em>Redemption instructions will appear here.</em></div>
-  </figure>
 
+    <div>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Enter email"
+        style="margin-bottom: 1rem;"
+      />
+      <div>
+        <button onclick="triggerEvent('loyalty_signup');">
+          Click to complete the 'loyalty_signup' action
+        </button>
+      </div>
+    </div>
+
+    <h3>Customizations</h3>
+    <ul>
+      <li>Claim Screen: "Congratulations!...</li>
+      <li>Deal Tier -> Full Description</li>
+      <li>Deal Tier -> Instructions</li>
+      <li>Deal Tier -> Fine Print</li>
+    </ul>
+  </figure>
 </section>
 
-<section>
+<section class="main-content">
+  <h2>Redemption</h2>
+  <p>
+    Quikly can surface additional redemption messaging on any page of your site
+    to those who have successfully activated the offer. The code will not
+    activate unless an offer was previously awarded.
+  </p>
+  <img
+    class="m1 centered"
+    src="/assets/images/examples/redemption.png"
+    alt="redemption"
+  />
+
+  {% highlight html %}
+  <div id="quikly-promo">[redemption instructions loaded here]</div>
+  {% endhighlight %} {% highlight js %}
+  <script>
+    // assumes script tag has already been configured on the page (see above)
+    qData("ui", { page: "redemption", root: "quikly-promo" }); // enable UI and specify which page to render and where
+  </script>
+  {% endhighlight %}
+
+  <figure class="highlight demo">
+    <h3>Try It</h3>
+    <p>
+      <a href="{{ page.short_link }}"
+        >Click this link to activate the promotion.</a
+      >
+      Nothing will appear when you click the button unless you have activated
+      the promotion via this link.
+    </p>
+    <p>
+      <button onclick="goToPage('redemption', 'quikly-redemption')">
+        Click to reveal the redemption instructions
+      </button>
+    </p>
+    <h3>Customizations</h3>
+    <ul>
+      <li>Redemption widget header</li>
+      <li>
+        In-Store redemption widget body.
+      </li>
+      <li>
+        Online redemption widget body.
+      </li>
+    </ul>
+  </figure>
+</section>
+
+<section class="inline-embed">
+  <div id="quikly-redemption">
+    <em>Redemption instructions will appear here.</em>
+  </div>
+</section>
+
+<section class="main-content">
   <h2>Configuration</h2>
   <ul>
-    <li>Campaign
+    <li>
+      Campaign
       <ul>
         <li>Enable UI: Checked</li>
         <li>Cookie not required: Check this box if you want the campaign to show up for everyone.</li>
         <li>Enable Visit Brand Page ETA</li>
         <li>Set up pixel, set the code (i.e. 'loyalty_signup')</li>
         <li>Add a Claim rule for 'pixel_goal'</li>
-        <li>Create a Short Link that redirects to the target page on the brand's site:
+        <li>
+          Create a Short Link that redirects to the target page on the brand's
+          site:
           <ul>
-            <li>Click "Enable tracking cookie" to append the q_scope parameter to the redirect.</li>
+            <li>
+              Click "Enable tracking cookie" to append the q_scope parameter to
+              the redirect.
+            </li>
             <li>Associate the link with the deal as the "parent" record.</li>
           </ul>
         </li>
-        <li>Make sure the script tag is embedded on the landing page so the q_scope parameter is captured.</li>
-        <li>Trigger the pixel code ('loyalty_signup') via the qData tag whenever the action is complete.</li>
+        <li>
+          Make sure the script tag is embedded on the landing page so the
+          q_scope parameter is captured.
+        </li>
+        <li>
+          Trigger the pixel code ('loyalty_signup') via the qData tag whenever
+          the action is complete.
+        </li>
       </ul>
     </li>
-    <li>Deal
+    <li>
+      Deal
       <ul>
         <li>Start at: When instructions will start showing</li>
         <li>Sales Start at: when people can claim</li>
@@ -187,11 +309,19 @@ short_link: https://www.quiklydemo.com/demo/s/loyalty
   </ul>
 </section>
 
-<section>
+<section class="main-content">
   <h2>Resources</h2>
   <ul>
-    <li>Short link to activate: <a
-        href="{{ page.short_link }}">{{ page.short_link }}</a></li>
+    <li>
+      Short link to activate:
+      <a href="{{ page.short_link }}"
+        >{{ page.short_link }}</a
+      >
+    </li>
+    <li>
+      Destination URL with q_scope appended:
+      <a href="?q_scope=ODAvRGVhbC80OTg%253D">Click here</a>
+    </li>
     <li>Campaign ID: 507</li>
   </ul>
 </section>
