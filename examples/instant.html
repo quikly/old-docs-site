@@ -2,18 +2,29 @@
 layout: default
 title: Quikly Script Tag for Embedded 'Instant' Campaign
 noindex: true
+js_src: https://pixel.quiklydemo.com/embed/js
+embed_config: m/YndhXo
+deal_id_1: 'zNJhaL'
+deal_id_2: 'AAehnq'
+# js_src: http://pixel.quikly.localhost:5000/embed/js
+# embed_config: m/PbPhw
+# deal_id_1: 'AAehLg'
+# deal_id_2: 'Elphkl'
 ---
 
-<script async src="https://pixel.quiklydemo.com/embed/js"></script>
+<script async src="{{ page.js_src }}"></script>
 <script>
   window.qDataLayer = window.qDataLayer || [];
   function qData() {
     qDataLayer.push(arguments);
   }
-  qData('config', 'm/MGxhEl');
+  qData('config', '{{ page.embed_config }}');
   function activateUI() {
-    qData('ui', { page: 'promo', id: 'zNJhaL', root: 'quikly-promo-1' });
-    qData('ui', { page: 'promo', id: 'AAehnq', root: 'quikly-promo-2' });
+    qData('ui', { page: 'promo', id: '{{ page.deal_id_1 }}', root: 'quikly-promo-1' });
+    qData('ui', { page: 'promo', id: '{{ page.deal_id_2 }}', root: 'quikly-promo-2' });
+  }
+  function loadPromoList() {
+    qData('ui', { page: 'promo', appRoot: 'quikly-promo-list' });
   }
 </script>
 
@@ -45,7 +56,7 @@ noindex: true
 <section>
   <h2>Scenario</h2>
   <p>A brand would like to feature a limited set of offers on their site. The value of the offer is dependent on the rank or speed of response. One a visitor claims a reward, they are directed to a product category to use their offer.</p>
-  <img src="/assets/images/examples/instant.png" class="centered" />
+  <img src="/assets/images/examples/instant.png" class="m1 centered" />
 </section>
 
 <section>
@@ -57,15 +68,15 @@ noindex: true
   <p>The Quikly script tag must be present on your site to dynamically display the promotion.</p>
 {% highlight html %}<div id="quikly-promo-1"></div>
 <div id="quikly-promo-2"></div>{% endhighlight %}
-{% highlight js %}<script async src="https://pixel.quiklydemo.com/embed/js"></script>
+{% highlight js %}<script async src="{{ page.js_src }}"></script>
 <script>
   window.qDataLayer = window.qDataLayer || [];
   function qData() {
     qDataLayer.push(arguments);
   }
-  qData('config', 'm/MGxhEl');
-  qData('ui', { page: 'promo', id: 'zNJhaL', root: 'quikly-promo-1' });
-  qData('ui', { page: 'promo', id: 'AAehnq', root: 'quikly-promo-2' });
+  qData('config', '{{ page.embed_config }}');
+  qData('ui', { page: 'promo', id: '{{ page.deal_id_1 }}', root: 'quikly-promo-1' });
+  qData('ui', { page: 'promo', id: '{{ page.deal_id_2 }}', root: 'quikly-promo-2' });
 </script>
 {% endhighlight %}
 
@@ -83,6 +94,39 @@ noindex: true
 </figure>
 
 </section>
+
+
+<section>
+  <h2>Promo List</h2>
+  <p>If you want Quikly to display all active campaigns in a single region on your site, you can use an 'appRoot'</p>
+
+  <h3>Script Tag</h3>
+{% highlight html %}<div id="quikly-promo-list"></div>{% endhighlight %}
+{% highlight js %}<script async src="{{ page.js_src }}"></script>
+<script>
+  window.qDataLayer = window.qDataLayer || [];
+  function qData() {
+    qDataLayer.push(arguments);
+  }
+  qData('config', '{{ page.embed_config }}');
+  qData('ui', { page: 'promo', appRoot: 'quikly-promo-list' });
+</script>
+{% endhighlight %}
+
+
+<figure class="highlight demo">
+  <h3>Try It</h3>
+  <p>Click here to embed the two promotions on the page.</p>
+  <p>
+    <button onclick="loadPromoList()">Click to load all campaigns</button>
+  </p>
+  <section class="promo-wrap" id="quikly-promo-list">
+    <em>Campaigns will load here.</em>
+  </section>
+</figure>
+
+</section>
+
 
 <section>
   <h2>Configuration</h2>

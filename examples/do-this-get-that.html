@@ -2,21 +2,28 @@
 layout: default
 title: Quikly Script Tag for 'Do This Get That' Campaign
 noindex: true
+js_src: https://pixel.quiklydemo.com/embed/js
+embed_config: m/YndhXo
+short_link: https://www.quiklydemo.com/demo/s/loyalty
+# js_src: http://pixel.quikly.localhost:5000/embed/js
+# embed_config: m/PbPhw
+# short_link: http://www.quikly.localhost:5000/demo/s/loyalty
 ---
 
-<script async src="https://pixel.quiklydemo.com/embed/js"></script>
+<script async src="{{ page.js_src }}"></script>
 <script>
   window.qDataLayer = window.qDataLayer || [];
   function qData() {
     qDataLayer.push(arguments);
   }
-  qData('config', 'm/YndhXo');
+  qData('config', '{{ page.embed_config }}');
   function goToPage(page, root = 'quikly-promo') {
     qData('ui', { page: page, root: root });
   }
   function triggerEvent(action) {
-    qData('ui', { page: 'reward' })
+    qData('ui', { page: 'reward' } )
     email = document.getElementById('email').value
+    console.log('triggering', action, 'with', email);
     qData(action, { email: email });
   }
 </script>
@@ -66,20 +73,20 @@ noindex: true
     present on every page on your site, but it does have to be included on any page where: a) an activation URLs
     redirects, b) Quikly renders dynamic content, or c) an incentivized action occurs.</p>
 
-{% highlight js %}<script async src="https://pixel.quiklydemo.com/embed/js"></script>
+{% highlight js %}<script async src="{{ page.js_src }}"></script>
 <script>
   window.qDataLayer = window.qDataLayer || [];
   function qData() {
     qDataLayer.push(arguments);
   }
-  qData('config', 'm/YndhXo');
+  qData('config', '{{ page.embed_config }}');
 </script>{% endhighlight %}
 </section>
 
 <section>
   <h2>Showing Instructions for Completing an Action</h2>
   <p>Quikly can display messaging around an active promotion to visitors who clicked an activation link. Additional parameters can be passed to the “ui” command to control where the message appears.</p>
-  <img src="/assets/images/examples/instructions.png" alt="instructions" />
+  <img class="m1" src="/assets/images/examples/instructions.png" alt="instructions" />
 
 {% highlight html %}<div id="quikly-promo">[instructions loaded here]</div>{% endhighlight %}
 {% highlight js %}
@@ -90,7 +97,7 @@ noindex: true
 
   <figure class="highlight demo">
     <h3>Try It</h3>
-    <p><a href="https://www.quiklydemo.com/demo/s/loyalty">Click this link to activate the promotion.</a> Nothing will appear when you click the button unless you have activated the promotion via this link.</p>
+    <p><a href="{{ page.short_link }}">Click this link to activate the promotion.</a> Nothing will appear when you click the button unless you have activated the promotion via this link.</p>
     <p>
       <button onclick="goToPage('instructions', 'quikly-instructions')">Click to reveal the instructions</button>
     </p>
@@ -102,7 +109,7 @@ noindex: true
 <section>
   <h2>Showing the Reward</h2>
   <p>Upon completing the action and triggering the event, Quikly can display a modal window with more detail about the awarded offer. In this case, we set up the “reward” page, and as soon as the “loyalty_signup” event is triggered, the reward UI is revealed.</p>
-  <img class="centered" src="/assets/images/examples/reward.png" alt="reward" style="max-width: 300px;" />
+  <img class="m1 centered" src="/assets/images/examples/reward.png" alt="reward" style="max-width: 300px;" />
 
 {% highlight js %}
 <script>
@@ -128,7 +135,7 @@ noindex: true
 <section>
   <h2>Redemption</h2>
   <p>Quikly can surface additional redemption messaging on any page of your site to those who have successfully activated the offer. The code will not activate unless an offer was previously awarded.</p>
-  <img class="centered" src="/assets/images/examples/redemption.png" alt="redemption" />
+  <img class="m1 centered" src="/assets/images/examples/redemption.png" alt="redemption" />
 
 {% highlight html %}<div id="quikly-promo">[redemption instructions loaded here]</div>{% endhighlight %}
 
@@ -155,7 +162,7 @@ noindex: true
     <li>Campaign
       <ul>
         <li>Enable UI: Checked</li>
-        <li>Require cookie: Checked (must visit via short link to activate)</li>
+        <li>Cookie not required: Check this box if you want the campaign to show up for everyone.</li>
         <li>Enable Visit Brand Page ETA</li>
         <li>Set up pixel, set the code (i.e. 'loyalty_signup')</li>
         <li>Add a Claim rule for 'pixel_goal'</li>
@@ -171,7 +178,10 @@ noindex: true
     </li>
     <li>Deal
       <ul>
-        <li>Start at date in the past</li>
+        <li>Start at: When instructions will start showing</li>
+        <li>Sales Start at: when people can claim</li>
+        <li>Sales End at: No longer accepts new claims, also does not show initial instructions before claiming</li>
+        <li>End at: Will show 'redeem' box up until this time< /li>
       </ul>
     </li>
   </ul>
@@ -181,8 +191,7 @@ noindex: true
   <h2>Resources</h2>
   <ul>
     <li>Short link to activate: <a
-        href="https://www.quiklydemo.com/demo/s/loyalty">https://www.quiklydemo.com/demo/s/loyalty</a></li>
-    <li>Destination URL with q_scope appended: <a href="?q_scope=ODAvRGVhbC80OTg%253D">Click here</a></li>
+        href="{{ page.short_link }}">{{ page.short_link }}</a></li>
     <li>Campaign ID: 507</li>
   </ul>
 </section>

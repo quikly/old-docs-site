@@ -13,14 +13,14 @@ body.home {
 }
 
 .main-content {
-  p, img, .highlight {
+  p, .highlight, img.m1 {
     margin: 1rem 2rem;
+  }
+  img.m1 {
+    max-width: calc(100% - 2rem);
   }
   .highlight {
     width: calc(100% - 2rem);;
-  }
-  img {
-    max-width: calc(100% - 2rem);
   }
   ul {
     padding-left: 2rem;
