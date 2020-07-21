@@ -2,15 +2,19 @@
 layout: default
 title: Quikly Script Tag for Embedded Campaign
 noindex: true
+js_src: https://pixel.quiklydemo.com/embed/js
+embed_config: m/nzMhLd
+# js_src: http://pixel.quikly.localhost:5000/embed/js
+# embed_config: m/lwxhD
 ---
 
-<script async src="https://pixel.quiklydemo.com/embed/js"></script>
+<script async src="{{ page.js_src }}"></script>
 <script>
   window.qDataLayer = window.qDataLayer || [];
   function qData() {
     qDataLayer.push(arguments);
   }
-  qData('config', 'm/nzMhLd');
+  qData('config', '{{ page.embed_config }}');
 </script>
 
 <nav>
@@ -57,9 +61,8 @@ noindex: true
   function qData() {
     qDataLayer.push(arguments);
   }
-  qData('config', 'm/nzMhLd'); // Quikly
+  qData('config', {{ page.embed_config }}); // Quikly
   qData('ui');</script>{% endhighlight %}
-
 
 <figure class="highlight demo">
   <h3>Try It</h3>
