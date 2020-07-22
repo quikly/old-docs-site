@@ -14,6 +14,14 @@ deal_id_2: 'AAehnq'
 
 <script async src="{{ page.js_src }}"></script>
 <script>
+  window.agwa = {};
+  window.agwa.triggerModal = () => {
+    return new Promise((resolve, reject) => {
+      const result = window.prompt('Enter your email');
+      resolve([{ email: result }]);
+    });
+  };
+
   window.qDataLayer = window.qDataLayer || [];
   function qData() {
     qDataLayer.push(arguments);
@@ -89,9 +97,7 @@ deal_id_2: 'AAehnq'
     <p>
       <button onclick="loadPromoList()">Click to load all campaigns</button>
     </p>
-    <section class="promo-wrap" id="quikly-promo-list">
-      <em>Campaigns will load here.</em>
-    </section>
+    <section class="promo-wrap" id="quikly-promo-list"></section>
   </figure>
 
   <h2>Limiting Promo List to Specific Campaigns</h2>
@@ -116,9 +122,7 @@ deal_id_2: 'AAehnq'
     <p>
       <button onclick="loadPromoListIds()">Click to load specific campaigns</button>
     </p>
-    <section class="promo-wrap" id="quikly-promo-list-ids">
-      <em>Campaigns will load here.</em>
-    </section>
+    <section class="promo-wrap" id="quikly-promo-list-ids"></section>
   </figure>
 
   <h2>Passing in an Email</h2>
@@ -134,7 +138,7 @@ deal_id_2: 'AAehnq'
   }
   qData('config', '{{ page.embed_config }}');
   qData('ui', { page: 'promo',
-    appRoot: 'quikly-promo-list-ids-email',
+    root: 'quikly-promo-list-ids-email',
     ids: ["{{ page.deal_id_1 }}", "{{ page.deal_id_2 }}"],
     email: 'name@example.com'}
   );
@@ -153,12 +157,9 @@ deal_id_2: 'AAehnq'
     />
     <div>
       <button onclick="loadPromoListIds(true);">
-        Click to load campaigns with an email address
+        Click to load campaigns with an email address above.
       </button>
     </div>
-    <section class="promo-wrap" id="quikly-promo-list-ids">
-      <em>Campaigns will load here.</em>
-    </section>
   </figure>
 
 </section>

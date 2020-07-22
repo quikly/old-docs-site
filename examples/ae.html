@@ -1,0 +1,42 @@
+---
+layout: default
+title: Quikly Script Tag for Embedded 'Instant' Campaign
+noindex: true
+js_src: https://pixel.quiklydemo.com/embed/js
+embed_config: m/YndhXo
+# js_src: http://pixel.quikly.localhost:5000/embed/js
+# embed_config: m/eEYhM
+# deal_id_1: 'Elphrl'
+# deal_id_2: 'NRphgE'
+---
+
+<script async src="{{ page.js_src }}"></script>
+<script>
+  window.agwa = {};
+  window.agwa.triggerModal = () => {
+    return new Promise((resolve, reject) => {
+      const result = window.prompt('Enter your email');
+      resolve([{ email: result }]);
+    });
+  };
+
+  window.qDataLayer = window.qDataLayer || [];
+  function qData() {
+    qDataLayer.push(arguments);
+  }
+  qData('config', '{{ page.embed_config }}');
+  qData('ui', { page: 'promo', root: 'quikly-promo-list' });
+</script>
+
+<style>
+  .q_layout_root [class^="q_"] {
+    font-family: "Avenir";
+  }
+  .promo-wrap {
+    width: 1024px;
+    background: linear-gradient(270deg, #F64C76 0%, #E86394 47.07%, #D08AC7 76.73%, #E27BBE 100%);
+    padding: 90px;
+  }
+</style>
+
+<section class="promo-wrap" id="quikly-promo-list"></section>
