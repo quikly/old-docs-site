@@ -1,9 +1,10 @@
 ---
-layout: default
+layout: demo
 title: Quikly Script Tag for Embedded 'Instant' Campaign
 noindex: true
 js_src: https://pixel.quiklydemo.com/embed/js
 embed_config: m/YndhXo
+campaign_ids: "['vLpheg', 'dVwhWm', 'NRphRn', 'PVZhve', 'nrAhpM', 'xGphRG', 'VxZhGl', 'WLYhqa']"
 # js_src: http://pixel.quikly.localhost:5000/embed/js
 # embed_config: m/eEYhM
 # deal_id_1: 'Elphrl'
@@ -25,16 +26,21 @@ embed_config: m/YndhXo
     qDataLayer.push(arguments);
   }
   qData('config', '{{ page.embed_config }}');
-  qData('ui', { page: 'promo', root: 'quikly-promo-list' });
+  qData('ui', { page: 'promo', root: 'quikly-promo-list', ids: {{ page.campaign_ids }} });
 </script>
 
 <style>
+  body {
+    background: linear-gradient(270deg, #F64C76 0%, #E86394 47.07%, #D08AC7 76.73%, #E27BBE 100%);
+  }
+
   .q_layout_root [class^="q_"] {
     font-family: "Avenir";
   }
+
   .promo-wrap {
     width: 1024px;
-    background: linear-gradient(270deg, #F64C76 0%, #E86394 47.07%, #D08AC7 76.73%, #E27BBE 100%);
+
     padding: 90px;
   }
 </style>
