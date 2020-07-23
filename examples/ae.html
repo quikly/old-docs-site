@@ -7,8 +7,7 @@ embed_config: m/YndhXo
 campaign_ids: "['vLpheg', 'dVwhWm', 'NRphRn', 'PVZhve', 'nrAhpM', 'xGphRG', 'VxZhGl', 'WLYhqa']"
 # js_src: http://pixel.quikly.localhost:5000/embed/js
 # embed_config: m/eEYhM
-# deal_id_1: 'Elphrl'
-# deal_id_2: 'NRphgE'
+# campaign_ids: "['WLYhZR']"
 ---
 
 <script async src="{{ page.js_src }}"></script>
@@ -32,16 +31,23 @@ campaign_ids: "['vLpheg', 'dVwhWm', 'NRphRn', 'PVZhve', 'nrAhpM', 'xGphRG', 'VxZ
 <style>
   body {
     background: linear-gradient(270deg, #F64C76 0%, #E86394 47.07%, #D08AC7 76.73%, #E27BBE 100%);
+    font-family: "Avenir Next", Avenir, Arial, Helvetica, sans-serif;
   }
 
   .q_layout_root [class^="q_"] {
-    font-family: "Avenir";
+
   }
 
-  .promo-wrap {
-    width: 100%;
-    max-width: 1024px;
+  .promo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+  .promo-wrap {
+    max-width: 1024px;
+    min-height: 860px;
+  }
+
   @media (min-width: 480px) {
     .promo-wrap {
       padding: 90px;
@@ -49,4 +55,10 @@ campaign_ids: "['vLpheg', 'dVwhWm', 'NRphRn', 'PVZhve', 'nrAhpM', 'xGphRG', 'VxZ
   }
 </style>
 
-<section class="promo-wrap" id="quikly-promo-list"></section>
+<div class="promo-container">
+  <section class="promo-wrap" id="quikly-promo-list"></section>
+</div>
+
+<p style="display: block; text-align: center; padding-bottom: 5rem;">
+  <a href="{{ site.baseurl }}{% link examples/redemption.html %}" style="color:#fff;">Preview Shopping Bag</a>
+</p>

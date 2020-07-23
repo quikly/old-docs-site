@@ -1,0 +1,41 @@
+---
+layout: demo
+title: Quikly Script Tag for Embedded 'Instant' Campaign
+noindex: true
+js_src: https://pixel.quiklydemo.com/embed/js
+embed_config: m/YndhXo
+# js_src: http://pixel.quikly.localhost:5000/embed/js
+# embed_config: m/eEYhM
+---
+
+<script async src="{{ page.js_src }}"></script>
+<script>
+  window.qDataLayer = window.qDataLayer || [];
+  function qData() {
+    qDataLayer.push(arguments);
+  }
+  qData('config', '{{ page.embed_config }}');
+  qData('ui', { page: 'redemption', root: 'quikly-promo-list' });
+</script>
+
+<style>
+  body {
+    background: #fff;
+  }
+
+  .q_layout_root [class^="q_"] {
+    font-family: "Avenir Next", Avenir, serif;
+  }
+
+  .promo-wrap {
+    width: 100%;
+    max-width: 1024px;
+  }
+  @media (min-width: 480px) {
+    .promo-wrap {
+      padding: 90px;
+    }
+  }
+</style>
+
+<section class="promo-wrap" id="quikly-promo-list"></section>
