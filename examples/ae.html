@@ -13,8 +13,8 @@ campaign_ids: "['vLpheg', 'dVwhWm', 'NRphRn', 'PVZhve', 'nrAhpM', 'xGphRG', 'VxZ
 <script async src="{{ page.js_src }}"></script>
 <script>
   window.agwa = {};
-  window.agwa.triggerModal = () => {
-    return new Promise((resolve, reject) => {
+  window.agwa.triggerModal = function () {
+    return new Promise(function (resolve, reject) {
       const result = window.prompt('Enter your email');
       resolve([{ email: result }]);
     });
