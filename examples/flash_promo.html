@@ -1,0 +1,69 @@
+---
+layout: demo
+title: Quikly Script Tag for Embedded 'Instant' Campaign
+noindex: true
+# js_src: https://pixel.quiklydemo.com/embed/js
+# embed_config: m/YndhXo
+# campaign_ids: "['vLpheg', 'dVwhWm', 'NRphRn', 'PVZhve', 'nrAhpM', 'xGphRG', 'VxZhGl', 'WLYhqa']"
+# js_src: http://pixel.quikly.localhost:5000/embed/js
+# embed_config: m/eEYhM
+# campaign_ids: "['WLYhZR', 'VxZhQN', 'PVZhqy', 'vLphYV', 'GqGhmQ', 'LRwhGJ']"
+# campaign_ids: "['VxZhQN', 'PVZhqy', 'vLphYV', 'GqGhmQ']"
+# campaign_ids: "['VxZhQN']"
+# js_src: https://pixel.quikly.com/embed/js
+# embed_config: m/gZkhQZ
+# campaign_ids: "['vLpheg', 'dVwhWm', 'NRphRn', 'PVZhve', 'nrAhpM', 'xGphRG', 'VxZhGl', 'WLYhqa']"
+# prod demo
+js_src: https://pixel.quikly.com/embed/js
+embed_config: m/NDEhQQE
+campaign_ids: "['XqyhklE']"
+---
+<script async src="{{ page.js_src }}"></script>
+<script>
+  window.agwa = {};
+  window.agwa.triggerModal = () => {
+    return new Promise((resolve, reject) => {
+      const result = window.prompt('Enter your email');
+      resolve([{ email: result }]);
+    });
+  };
+
+  window.qDataLayer = window.qDataLayer || [];
+  function qData() {
+    qDataLayer.push(arguments);
+  }
+  qData('config', '{{ page.embed_config }}');
+  qData('ui', { page: 'promo', root: 'quikly-promo-list', ids: {{ page.campaign_ids }}, email: '' });
+</script>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(270deg, #F64C76 0%, #E86394 47.07%, #D08AC7 76.73%, #E27BBE 100%);
+    font-family: "Avenir Next Regular", "Avenir Next", Avenir, Arial, Helvetica, sans-serif;
+  }
+
+  [class^="q_"], [class^="q_"] * {
+    font-family: "Avenir Next Regular", "Avenir Next", Avenir, Arial, Helvetica, sans-serif;
+  }
+
+  .promo-wrap {
+    max-width: 1024px;
+    min-height: 860px;
+  }
+
+  @media (min-width: 480px) {
+    .promo-wrap {
+      padding: 90px;
+    }
+  }
+</style>
+
+<div class="promo-container">
+  <section class="promo-wrap" id="quikly-promo-list"></section>
+</div>
+
+<p style="display: block; text-align: center; padding-bottom: 5rem;">
+  <a href="{{ site.baseurl }}{% link examples/redemption.html %}" style="color:#fff;">Preview Shopping Bag</a>
+</p>
