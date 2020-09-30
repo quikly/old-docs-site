@@ -4,8 +4,9 @@ title: Quikly Script Tag for Embedded Campaign
 noindex: true
 js_src: https://pixel.quiklydemo.com/embed/js
 embed_config: m/nzMhLd
+deal_ids: "['nrAhQqy']"
 # js_src: http://pixel.quikly.localhost:5000/embed/js
-# embed_config: m/lwxhD
+# embed_config: lwxhD
 ---
 
 <script async src="{{ page.js_src }}"></script>
@@ -24,31 +25,22 @@ embed_config: m/nzMhLd
 </nav>
 
 <header>
-  <h1>Claim By Action in Widget</h1>
+  <h1>Quikly Hype on External Site</h1>
 </header>
 
 
 <section>
   <h2>Overview</h2>
-  <p>Quikly's script tag can render an embedded widget at the bottom of your site that can incentivize an action, such as providing an email address, answering a survey, watching a video, or following you on instagram. When the visitor completes that action they are rewarded. Quikly tracks the response and reveals the reward.</p>
+  <p>Quikly's script tag can embed a campaign directly on your site. </p>
 </section>
 
 <section>
   <h2>Scenario</h2>
-  <p>A brand would like to grow their email database and get the email addresses of visitors to their blog. Over a period of a few days, the first 1000 people to provide their email address will get a 10% off offer.</p>
+  <p>A brand would like to feature a Quikly campaign directly on their website.</p>
 </section>
 
 <section>
   <h2>Set Up</h2>
-  <h3>Activation URLs</h3>
-  <p>If desired, Quikly can provide activation URLs. These links will activate the
-    campaign for that visitor and aid in tracking the performance of each channel. This can be used to limit
-    participation in a campaign only to a select audience that has visited your site through a specific link.</p>
-
-  <p>Alternatively, the promotion can be configured to be available to all site visitors rather than a those that activated through a special link.</p>
-
-  <img class="m1" src="/assets/images/examples/claim_by_action.png" alt="embedded quikly campaign" />
-
   <h3>Script Tag</h3>
   <p>The Quikly script tags must be present on your site to dynamically display promotion details, such as instructions
     on how to complete the action, or how to take advantage of the offer once the action is complete. This tag does not have to be
@@ -62,14 +54,16 @@ embed_config: m/nzMhLd
     qDataLayer.push(arguments);
   }
   qData('config', {{ page.embed_config }}); // Quikly
-  qData('ui', { page: 'default' });</script>{% endhighlight %}
+  qData('ui', { page: 'default', root: 'quikly-embed', ids: {{ page.deal_ids }} });</script>{% endhighlight %}
 
 <figure class="highlight demo">
   <h3>Try It</h3>
   <p>
-    <button onclick="qData('ui', { page: 'default' })">Click to reveal the Quikly campaign.</button>
+    <button onclick="qData('ui', { page: 'default', root: 'quikly-embed', ids: {{ page.deal_ids }} })">Click to reveal the Quikly campaign.</button>
   </p>
 </figure>
+
+<div id="quikly-embed"></div>
 
 </section>
 
