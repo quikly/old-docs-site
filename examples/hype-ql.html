@@ -1,0 +1,90 @@
+---
+layout: default
+title: Quikly Script Tag for Embedded Campaign
+noindex: true
+js_src: https://pixel.quiklydemo.com/embed/js
+embed_config: m/nzMhLd
+deal_ids: "['aRWhQWG']"
+# js_src: http://pixel.quikly.localhost:5000/embed/js
+# embed_config: lwxhD
+---
+
+<script async src="{{ page.js_src }}"></script>
+<script>
+  window.qDataLayer = window.qDataLayer || [];
+  function qData() {
+    qDataLayer.push(arguments);
+  }
+  qData('config', '{{ page.embed_config }}');
+</script>
+
+<nav>
+  <ul>
+    <li><a href="{% link examples/index.html %}">&lt; Back to Examples</a></li>
+  </ul>
+</nav>
+
+<header>
+  <h1>Quikly Hype on External Site</h1>
+</header>
+
+
+<section>
+  <h2>Overview</h2>
+  <p>Quikly's script tag can embed a campaign directly on your site. </p>
+</section>
+
+<section>
+  <h2>Scenario</h2>
+  <p>A brand would like to feature a Quikly campaign directly on their website.</p>
+</section>
+
+<section>
+  <h2>Set Up</h2>
+  <h3>Script Tag</h3>
+  <p>The Quikly script tags must be present on your site to dynamically display promotion details, such as instructions
+    on how to complete the action, or how to take advantage of the offer once the action is complete. This tag does not have to be
+    present on every page on your site, but it does have to be included on any page where: a) an activation URLs
+    redirects or b) Quikly renders dynamic content.</p>
+
+{% highlight js %}<script async src="https://pixel.quiklydemo.com/embed/js"></script>
+<script>
+  window.qDataLayer = window.qDataLayer || [];
+  function qData() {
+    qDataLayer.push(arguments);
+  }
+  qData('config', {{ page.embed_config }}); // Quikly
+  qData('ui', { page: 'hype', root: 'quikly-embed', ids: {{ page.deal_ids }} });</script>{% endhighlight %}
+
+<figure class="highlight demo">
+  <h3>Try It</h3>
+  <p>
+    <button onclick="qData('ui', { page: 'hype', root: 'quikly-embed', ids: {{ page.deal_ids }} })">Click to reveal the Quikly campaign.</button>
+  </p>
+</figure>
+
+<div id="quikly-embed"></div>
+
+</section>
+
+<section>
+  <h2>Set Up</h2>
+  <ul>
+    <li>Campaign
+      <ul>
+        <li>Enable UI: TRUE</li>
+        <li>Cooke not required: TRUE</li>
+        <li>Usually we want to use a custom segment for these campaigns, but it's not required.</li>
+        <li>Add a answer survey ETA with a survey</li>
+        <li>Enable claim by action</li>
+        <li>Set up as an 'uno' campaign and set expiration times in the deal tiers</li>
+        <li>Add a Claim rule for 'answer_survey' </li>
+      </ul>
+    </li>
+    <li>Deal
+      <ul>
+        <li>Start at date in the past</li>
+      </ul>
+    </li>
+  </ul>
+</section>

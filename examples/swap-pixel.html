@@ -1,6 +1,6 @@
 ---
 layout: example
-title: Quikly Script Tag for 'Do This Get That' Campaign
+title: Quikly Script Tag for 'Swap' Campaign
 noindex: true
 js_src: https://pixel.quiklydemo.com/embed/js
 embed_config: m/YndhXo
@@ -36,13 +36,14 @@ short_link: https://www.quiklydemo.com/demo/s/loyalty
       </li>
     </ul>
   </nav>
-  <h1>Do This Get That</h1>
+  <h1>Quikly Swap</h1>
 </header>
 
 <section class="main-content">
   <h2>Overview</h2>
   <p>
-    Quikly provides activation links that enable a specific promotion for a
+    Quikly Swap allows you to swap the completion of marketing
+    actions for instant rewards. Quikly provides activation links that enable a specific promotion for a
     targeted audience on your site. Visitors click through to the page on your
     site and complete the key activity. The Quikly script tracks the response,
     locks in the position, and reveals the reward earned by email or on your
@@ -53,8 +54,8 @@ short_link: https://www.quiklydemo.com/demo/s/loyalty
 <section class="main-content">
   <h2>Scenario</h2>
   <p>
-    A customer clicks the quikly short link. Quikly appends a url parameter and
-    redirects the visitor to a page on the brand's website. This page includes
+    A customer clicks a special link. Quikly appends a url parameter and
+    redirects the visitor to a page on the your website. This page includes
     Quikly's script tag in order to read the appended parameter from the url and
     store it in a first-party cookie.
   </p>
@@ -239,7 +240,7 @@ short_link: https://www.quiklydemo.com/demo/s/loyalty
         >Click this link to activate the promotion.</a
       >
       Nothing will appear when you click the button unless you have activated
-      the promotion via this link.
+      the promotion via this link and have a "q_scope" cookie from claiming an offer.
     </p>
     <p>
       <button onclick="goToPage('redemption', 'quikly-redemption')">
