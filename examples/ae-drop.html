@@ -1,0 +1,44 @@
+---
+layout: demo
+title: Quikly Drop - AE
+noindex: true
+js_src: https://pixel.quiklydemo.com/embed/js
+embed_config: m/YndhXo
+campaign_ids: "['XqyhlVJ']"
+---
+
+<script async src="{{ page.js_src }}"></script>
+<script>
+  window.agwa = {};
+  window.agwa.triggerModal = function () {
+    return new Promise(function (resolve, reject) {
+      const result = window.prompt('Enter your email');
+      resolve([{ email: result }]);
+    });
+  };
+
+  window.qDataLayer = window.qDataLayer || [];
+  function qData() {
+    qDataLayer.push(arguments);
+  }
+  qData('config', '{{ page.embed_config }}');
+  qData('ui', { page: 'promo', root: 'quikly-promo', ids: {{ page.campaign_ids }} });
+</script>
+
+<style>
+  body {
+    font-family: "Avenir Next", Avenir, Arial, Helvetica, sans-serif;
+  }
+
+  .q_layout_root [class^="q_"] {
+
+  }
+</style>
+
+<div class="promo-container">
+  <section class="ae-container" id="quikly-promo"></section>
+</div>
+
+<p style="display: block; text-align: center; padding-bottom: 5rem;">
+  <a href="{{ site.baseurl }}{% link examples/redemption.html %}" style="color:#fff;">Preview Shopping Bag</a>
+</p>
