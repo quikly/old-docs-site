@@ -23,6 +23,15 @@ campaign_ids: "['XqyhlVJ']"
   }
   qData('config', '{{ page.embed_config }}');
   qData('ui', { page: 'drop', root: 'quikly-promo', ids: {{ page.campaign_ids }} });
+  
+  function toggleClasses() {
+    var el = document.getElementById('quikly-promo');
+    if (el.className == "ae-container") {
+      el.className = "aerie-container";
+    } else {
+      el.className = "ae-container";
+    } 
+  }
 </script>
 
 <style>
@@ -35,9 +44,12 @@ campaign_ids: "['XqyhlVJ']"
   }
 </style>
 
+<button onclick="toggleClasses();">Switch Brand</button>
+
 <div class="promo-container">
   <section class="ae-container" id="quikly-promo"></section>
 </div>
+
 
 <p style="display: block; text-align: center; padding-bottom: 5rem;">
   <a href="{{ site.baseurl }}{% link examples/redemption.html %}" style="color:#fff;">Preview Shopping Bag</a>
